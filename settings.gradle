@@ -1,2 +1,3 @@
 rootProject.name = 'more_enhancer'
 
+include ":mybatis"

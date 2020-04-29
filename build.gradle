@@ -1,25 +1,87 @@
-plugins {
-    id 'java'
-    id 'org.jetbrains.kotlin.jvm' version '1.3.72'
+buildscript {
+    repositories {
+        maven { url "http://maven.aliyun.com/repository/central" }
+        maven { url "http://maven.aliyun.com/repository/jcenter" }
+    }
+    dependencies {
+        classpath "com.diffplug.spotless:spotless-plugin-gradle:3.28.1"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.61"
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.8"
+        classpath "org.sonarsource:sonar-persistit:3.3.2"
+    }
 }
 
-group 'cn.zj.hz.xhgl'
-version '1.0.0'
+subprojects {
+    apply plugin: "com.diffplug.gradle.spotless"
+    apply plugin: "jacoco"
+    apply plugin: "java"
+    apply plugin: "kotlin"
+    apply plugin: "maven-publish"
+    apply plugin: "org.sonarqube"
 
-sourceCompatibility = 1.8
+    repositories {
+        maven { url "http://maven.aliyun.com/repository/central" }
+        maven { url "http://maven.aliyun.com/repository/jcenter" }
+    }
 
-repositories {
-    mavenCentral()
-}
+    group = "cn.zj.hz.xhgl"
+    version = project.properties["releaseVersion"] ?: "1.0.0"
 
-dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-}
+    ext {
+        commonsLangVersion = "3.9"
+        fastjsonVersion = "1.2.66"
+        hutoolVersion = "5.2.5"
+        kotlinVersion = "1.3.61"
+        lombokVersion = "1.18.8"
+        springBootVersion = "2.1.6.RELEASE"
+        springVersion = "5.1.8.RELEASE"
+    }
 
-compileKotlin {
-    kotlinOptions.jvmTarget = "1.8"
-}
-compileTestKotlin {
-    kotlinOptions.jvmTarget = "1.8"
+    dependencies {
+        annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+        testAnnotationProcessor "org.projectlombok:lombok:$lombokVersion"
+
+        compile "org.projectlombok:lombok:$lombokVersion"
+        testCompile "junit:junit:4.12"
+    }
+
+    configurations.all {
+        resolutionStrategy {
+            cacheChangingModulesFor 0, "seconds"
+        }
+    }
+
+    compileJava {
+        options.encoding = "UTF-8"
+    }
+
+    compileTestJava {
+        options.encoding = "UTF-8"
+    }
+
+    compileKotlin {
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
+    }
+
+    compileTestKotlin {
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
+    }
+
+    javadoc {
+        source = sourceSets.main.allJava
+        classpath = configurations.compile
+    }
+
+    spotless {
+        java {
+            googleJavaFormat("1.7").aosp()
+        }
+        kotlin {
+            ktlint("0.36.0")
+        }
+    }
 }

@@ -1,0 +1,12 @@
+*.err*
+*.iml
+*.log*
+.gradle/
+.idea
+build/
+gradle/
+gradlew
+gradlew.bat
+node_modules
+out/
+target

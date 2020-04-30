@@ -8,7 +8,7 @@ import java.util.Map;
  * 明文密码
  *
  * @since 2020/3/11 18:05
- * @author 金遥力
+ * @author jyl
  */
 public class PlaintPasswordDecryptor extends AbstractPasswordDecryptor {
 

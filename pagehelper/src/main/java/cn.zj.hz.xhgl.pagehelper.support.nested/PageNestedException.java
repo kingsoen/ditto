@@ -4,7 +4,7 @@ package cn.zj.hz.xhgl.pagehelper.support.nested;
  * 嵌套映射分页查询异常
  *
  * @since 2020/1/14 16:30
- * @author 金遥力
+ * @author jyl
  */
 public class PageNestedException extends RuntimeException {
 

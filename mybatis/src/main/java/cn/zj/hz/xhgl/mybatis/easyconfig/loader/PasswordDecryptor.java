@@ -6,7 +6,7 @@ import org.springframework.beans.MutablePropertyValues;
  * 密码解密
  *
  * @since 2020/3/11 17:55
- * @author 金遥力
+ * @author jyl
  */
 public interface PasswordDecryptor {
     /**

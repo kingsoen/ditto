@@ -8,7 +8,7 @@ import lombok.Data;
  * 嵌套映射分页对象
  *
  * @since 2020/1/14 15:47
- * @author 金遥力
+ * @author jyl
  */
 @Data
 public class PageNested {

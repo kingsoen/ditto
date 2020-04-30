@@ -10,7 +10,7 @@ import java.lang.annotation.*;
  * 单个mybatis配置注解类
  *
  * @since 2020/1/6 14:59
- * @author 金遥力
+ * @author jyl
  */
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)

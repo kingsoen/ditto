@@ -11,7 +11,7 @@ import java.util.Map;
  * 密码解密统一抽象类
  *
  * @since 2020/3/11 18:39
- * @author 金遥力
+ * @author jyl
  */
 @Slf4j
 public abstract class AbstractPasswordDecryptor implements PasswordDecryptor {

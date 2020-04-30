@@ -8,7 +8,7 @@ import org.springframework.core.type.AnnotationMetadata;
  * 多datasource + mybatis 配置注册
  *
  * @since 2020/1/6 15:22
- * @author 金遥力
+ * @author jyl
  */
 public class MybatisMultiDataSourceRegistrar extends MybatisDataSourceRegistrar {
 
